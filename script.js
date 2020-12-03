@@ -3,21 +3,13 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var lowerCaseLetters;
-console.log("Variable lowerCaseLetters declared: " + lowerCaseLetters);
 var upperCaseLetters;
-console.log("Variable upperCaseLetters declared: " + upperCaseLetters);
 var numbers;
-console.log("Variable numbers declared: " + numbers);
 var specialChar;
-console.log("Variable specialChar declared: " + specialChar);
 var numChar;
-console.log("Variable numChar declared: " + numChar);
 var passwordLength;
-console.log("Variable passwordLength declared: " + passwordLength);
 var possibleString = " ";
-console.log("Variable possibleString declared: " + possibleString);
 var trimmedPossibleString = " ";
-console.log("Variable trimmedPossibleString declared: " + trimmedPossibleString);
 
 // Object containing strings of character choices
 var charTypes = {
@@ -40,10 +32,13 @@ function writePassword() {
       // and special characters
       lowerCaseLetters = confirm("Would you like to include lowercase letters?");
       console.log("User confirmed lowerCaseLetters to be " + lowerCaseLetters);
+      
       upperCaseLetters = confirm("Should capital letters be used?");
       console.log("User confirmed upperCaseLetters to be " + upperCaseLetters);
+      
       numbers = confirm("Should numerals be used?");
       console.log("User confirmed numbers to be " + numbers);
+      
       specialChar = confirm("Would you like to include special characters?\nNOTE -- The following will not be included:\nSpaces\nDouble quotation marks\nBackslash");
       console.log("User confirmed specialChar to be " + specialChar);
 
@@ -55,10 +50,13 @@ function writePassword() {
 
             lowerCaseLetters = confirm("Would you like to include lowercase letters?");
             console.log("User confirmed lowerCaseLetters to be " + lowerCaseLetters);
+            
             upperCaseLetters = confirm("Should capital letters be used?");
             console.log("User confirmed upperCaseLetters to be " + upperCaseLetters);
+            
             numbers = confirm("Should numerals be used?");
             console.log("User confirmed numbers to be " + numbers);
+            
             specialChar = confirm("Would you like to include special characters?\nNOTE: Spaces, single and double quotation marks, and tick marks will not be included.");
             console.log("User confirmed specialChar to be " + specialChar);
       }
@@ -68,10 +66,13 @@ function writePassword() {
       console.log("Value of possibleString plus lowerCaseLetters:" + possibleString);
 
       if (upperCaseLetters) possibleString += charTypes.upperCase;
+      console.log("Value of possibleString plus upperCaseLetters:" + possibleString);
 
       if (numbers) possibleString += charTypes.nums;
+      console.log("Value of possibleString plus numbers" + possibleString);
 
       if (specialChar) possibleString += charTypes.symbols;
+      console.log("Value of possibleString plus symbols:" + possibleString);
 
       console.log("The value of possibleString before trim:" + possibleString);
 
@@ -108,16 +109,15 @@ function writePassword() {
 
             console.log("The value of finalPassword is" + finalPassword);
             console.log("Count of characters in finalPassword is " + finalPassword.length);
+            console.log("The finalPassword with trim is:" + finalPassword.trim());
             return finalPassword;
       }
   
       var password = generatePassword(passwordLength, possibleString.trim());
       var passwordText = document.querySelector("#password");
 
-      passwordText.value = password;
-
-
-
+      passwordText.value = password.trim();
+      console.log("The password is:" + password);
 }
 
 // Add event listener to generate button
