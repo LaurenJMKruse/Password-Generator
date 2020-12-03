@@ -21,13 +21,14 @@ body {
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
+  background-color: hsl(360, 91%, 36%);
 }
 
 header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  color: white;
 }
 
 .card {
@@ -102,6 +103,7 @@ button[disabled] {
   -moz-appearance: none;
   appearance: none;
   border: none;
+  background-color: rgb(152, 211, 248);
   display: block;
   width: 100%;
   padding-top: 15px;
