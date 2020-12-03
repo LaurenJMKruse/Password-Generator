@@ -8,7 +8,16 @@ var numbers;
 var specialChar;
 var numChar;
 var passwordLength;
-var finalString;
+var finalString;                                       // FIX THIS; NOT DEFINED
+var charUserInput = [lowerCaseLetters, upperCaseLetters, numbers, specialChar];     // FIX THIS; NOT DEFINED; use append
+// Array containing strings of character choices
+var charTypes = [
+     {lowerCase: "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z"},
+     {upperCase: "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"},
+     {nums: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9"},
+     {symbols: "!#$%&()*+,-./:;<=>?@[\]^_{|}~"}
+];
+
 
 
 // Write password to the #password input
@@ -49,17 +58,6 @@ function writePassword() {
 
       // Conversion of password length from "string" (from user input) to number
       passwordLength = parseInt(numChar);
-
-      // FIX THIS; NOT DEFINED
-      var charUserInput = [lowerCaseLetters, upperCaseLetters, numbers, specialChar];    
-
-      // Array containing strings of character choices
-      var charTypes = [                                 // FIX THIS; NOT DEFINED
-                  {lowerCase: "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z"},
-                  {upperCase: "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"},
-                  {nums: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9"},
-                  {symbols: "!#$%&()*+,-./:;<=>?@[\]^_{|}~"}
-      ];
 
       // Assembly of string of possible characters, based upon user input
       for (var i = 0; i <= 3; i++)
