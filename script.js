@@ -8,16 +8,16 @@ var numbers;
 var specialChar;
 var numChar;
 var passwordLength;
-var finalString;                                       // FIX THIS; NOT DEFINED
-var charUserInput = [lowerCaseLetters, upperCaseLetters, numbers, specialChar];     // FIX THIS; NOT DEFINED; use append
-// Array containing strings of character choices
-var charTypes = [
-     {lowerCase: "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z"},
-     {upperCase: "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"},
-     {nums: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9"},
-     {symbols: "!#$%&()*+,-./:;<=>?@[\]^_{|}~"}
-];
+var possibleString = " ";
+var finalString = " ";                                       // FIX THIS; NOT DEFINED
 
+// Object containing strings of character choices
+var charTypes = {
+     lowerCase: "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z",
+     upperCase: "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z",
+     nums: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9",
+     symbols: "!#$%&()*+,-./:;<=>?@[\]^_{|}~"
+};
 
 
 // Write password to the #password input
@@ -47,6 +47,17 @@ function writePassword() {
             specialChar = confirm("Would you like to include special characters?\nNOTE: Spaces, single and double quotation marks, and tick marks will not be included.");
       }
 
+      // Assembly of string of user-selected character types:
+      if (lowerCaseLetters) possibleString += charTypes.lowerCase;            
+      
+      if (upperCaseLetters) possibleString += charTypes.upperCase;
+
+      if (numbers) possibleString += charTypes.nums;
+
+      if (specialChar) possibleString += charTypes.symbols;
+
+      console.log(`possibleString value: ${possibleString}`);
+
       // User is prompted to specify length of password
       numChar = prompt("How many characters should the password include?\nREQUIREMENTS:\nMinimum Number: 8\nMaximum Number: 128");
 
@@ -59,30 +70,21 @@ function writePassword() {
       // Conversion of password length from "string" (from user input) to number
       passwordLength = parseInt(numChar);
 
-      // Assembly of string of possible characters, based upon user input
-      for (var i = 0; i <= 3; i++)
-      {
-                  if (charUserInput[i] === true)
-                  {
-                        finalString += charTypes[i];
-                  } 
-      }
-
       function generatePassword(numChars, possibleChars)
       {       
             var numChars;
             var possibleChars;
             var finalPassword = " ";
 
-            for (var i = 0; i < finalString.length; i++)
+            for (var i = 0; i < possibleChars.length; i++)
             {
-                finalPassword += possibleChars.charAt(Math.floor(Math.random() * passwordLength)); 
+                finalPassword += possibleChars.charAt(Math.floor(Math.random() * numChars)); 
             }
 
             return finalPassword;
       }
   
-      var password = generatePassword(finalString.length, finalString);
+      var password = generatePassword(possibleString.length, possibleString);
       var passwordText = document.querySelector("#password");
 
       passwordText.value = password;
