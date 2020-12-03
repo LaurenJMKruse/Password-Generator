@@ -1,3 +1,4 @@
+var passwordLength = 0; 
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -20,15 +21,6 @@ generateBtn.addEventListener("click", writePassword);
 // Welcome message and instructions
 alert("Welcome to the Password Generator!\nPlease respond to the following questions to establish criteria for your password. Click 'OK' for 'Yes' and 'Cancel' for 'No'.");
 
-// User is prompted to specify length of password
-var numChar = prompt("How many characters should the password include?\nREQUIREMENTS:\nMinimum Number: 8\nMaximum Number: 128");
-
-// Should while loop detect invalid input, user is again prompted for password length
-while (numChar === null || numChar < 8 || numChar > 128)
-{
-    numChar = prompt("You have incorrectly specified the number of characters. Please try again.\nREQUIREMENTS:\nMinimum Number: 8\nMaximum Number: 128");
-}
-
 // User asked to determine character types
 // Responses provide Boolean values for lower and uppercase letters, numbers,
 // and special characters
@@ -48,3 +40,20 @@ while (lowerCaseLetters === false && upperCaseLetters === false && numbers === f
       numbers = confirm("Should numerals be used?");
       specialChar = confirm("Would you like to include special characters?\nNOTE: Spaces will not be included.");
 }
+
+// User is prompted to specify length of password
+var numChar = prompt("How many characters should the password include?\nREQUIREMENTS:\nMinimum Number: 8\nMaximum Number: 128");
+
+// Should while loop detect invalid input, user is again prompted for password length
+while (numChar === null || numChar < 8 || numChar > 128)
+{
+    numChar = prompt("You have incorrectly specified the number of characters. Please try again.\nREQUIREMENTS:\nMinimum Number: 8\nMaximum Number: 128");
+}
+
+// Conversion of password length from "string" (from user input) to number
+passwordLength = parseInt(numChar);
+
+
+
+
+
