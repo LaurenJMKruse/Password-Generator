@@ -1,5 +1,7 @@
 var passwordLength = 0; 
 
+var charUserInput = [lowerCaseLetters, upperCaseLetters, numbers, specialChar];
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -38,7 +40,7 @@ while (lowerCaseLetters === false && upperCaseLetters === false && numbers === f
       lowerCaseLetters = confirm("Would you like to include lowercase letters?");
       upperCaseLetters = confirm("Should capital letters be used?");
       numbers = confirm("Should numerals be used?");
-      specialChar = confirm("Would you like to include special characters?\nNOTE: Spaces will not be included.");
+      specialChar = confirm("Would you like to include special characters?\nNOTE: Spaces, single and double quotation marks, and tick marks will not be included.");
 }
 
 // User is prompted to specify length of password
@@ -52,6 +54,39 @@ while (numChar === null || numChar < 8 || numChar > 128)
 
 // Conversion of password length from "string" (from user input) to number
 passwordLength = parseInt(numChar);
+
+// Array containing strings of character choices
+var charTypes = [
+  {lowerCase: "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z"},
+  {upperCase: "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"},
+  {nums: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9"},
+  {symbols: "!#$%&()*+,-./:;<=>?@[\]^_{|}~"}
+];
+
+
+// Assembly of string of possible characters, based upon user input
+var finalString = " ";
+
+for (var i = 0; i <= 3; i++)
+{
+      if (charUserInput[i] === true)
+      {
+          finalString += charTypes[i];
+      } 
+}
+
+// Draft of code to be added to generatePassword function  
+function generatePassword()
+{       
+        var finalPassword = " ";
+
+        for (var i = 0; i < finalString.length; i++)
+        {
+                finalPassword += finalString.charAt(Math.floor(Math.random() * passwordLength)); 
+        }
+
+        return finalPassword;
+}
 
 
 
