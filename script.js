@@ -65,7 +65,8 @@ function writePassword() {
 
       // Assembly of string of user-selected character types:
       if (lowerCaseLetters) possibleString += charTypes.lowerCase;            
-      
+      console.log("Value of possibleString plus lowerCaseLetters:" + possibleString);
+
       if (upperCaseLetters) possibleString += charTypes.upperCase;
 
       if (numbers) possibleString += charTypes.nums;
@@ -73,9 +74,8 @@ function writePassword() {
       if (specialChar) possibleString += charTypes.symbols;
 
       console.log("The value of possibleString before trim:" + possibleString);
-      possibleString.trim();
 
-      console.log(`possibleString value after trim:${possibleString}`);
+      console.log("The value of possibleString with trim:" + possibleString.trim());
 
       // User is prompted to specify length of password
       numChar = prompt("How many characters should the password include?\nREQUIREMENTS:\nMinimum Number: 8\nMaximum Number: 128");
@@ -99,21 +99,23 @@ function writePassword() {
             var possibleChars;
             console.log("The value of possibleChars is " + possibleChars);
             var finalPassword = " ";
-            console.log("The value of finalPassword is " + finalPassword);
+            console.log("The value of finalPassword before equation is " + finalPassword);
 
             for (var i = 0; i < numChars; i++)
             {
-                finalPassword += possibleChars.charAt(Math.floor(Math.random() * numChars)); 
+                finalPassword += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length)); 
             }
 
-            console.log("The value of finalPassword is " + finalPassword);
+            console.log("The value of finalPassword is" + finalPassword);
+            console.log("Count of characters in finalPassword is " + finalPassword.length);
             return finalPassword;
       }
   
-      var password = generatePassword(passwordLength, possibleString);
+      var password = generatePassword(passwordLength, possibleString.trim());
       var passwordText = document.querySelector("#password");
 
       passwordText.value = password;
+
 
 
 }
